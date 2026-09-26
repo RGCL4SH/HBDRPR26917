@@ -224,20 +224,54 @@ document.getElementById("startButton").addEventListener("click", function(){
   document.querySelector("main").scrollIntoView({behavior:"smooth"});
 });
 
+const birthdaySound = new Audio("audio/suara_ultah.mp3");
+
 document.getElementById("partyButton").addEventListener("click", function(){
-  const symbols = ["🎉","🎊","✨","⭐","🟡","🔵","🟣"];
+
+  birthdaySound.currentTime = 0;
+  birthdaySound.play();
+
+  const symbols = [
+    "🎉",
+    "🎊",
+    "✨",
+    "⭐",
+    "🟡",
+    "🔵",
+    "🟣"
+  ];
 
   for(let i = 0; i < 90; i++){
+
     const piece = document.createElement("div");
+
     piece.className = "confetti";
-    piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    piece.style.left = Math.random() * 100 + "vw";
-    piece.style.fontSize = 12 + Math.random() * 18 + "px";
-    piece.style.setProperty("--x", (Math.random() * 240 - 120) + "px");
-    piece.style.animationDuration = 2.5 + Math.random() * 3 + "s";
+
+    piece.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    piece.style.left =
+      Math.random() * 100 + "vw";
+
+    piece.style.fontSize =
+      12 + Math.random() * 18 + "px";
+
+    piece.style.setProperty(
+      "--x",
+      (Math.random() * 240 - 120) + "px"
+    );
+
+    piece.style.animationDuration =
+      2.5 + Math.random() * 3 + "s";
+
     document.body.appendChild(piece);
-    setTimeout(function(){ piece.remove(); }, 6500);
+
+    setTimeout(function(){
+      piece.remove();
+    }, 6500);
+
   }
+
 });
 
 document.getElementById("closeButton").addEventListener("click", function(){
